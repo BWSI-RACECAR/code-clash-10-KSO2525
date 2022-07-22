@@ -47,14 +47,18 @@ class Solution:
                 counterf[letter] = 0
             counterf[letter] += 1
         rhyme_count = 0
+        rhymes = []
         for i in range(len(lyrics)-1):
             temp_count = 1
             temp = lyrics[i][-3:]
-            for x in lyrics[i+1:]:
-                temp2 = x[-3:]
-                if temp == temp2:
-                    temp_count += 1
+            if temp not in rhymes:
+                for x in lyrics[i+1:]:
+                    temp2 = x[-3:]
+                    if temp == temp2:
+                        temp_count += 1
             if temp_count != 1:
+                rhymes.append(temp)
+                #print(rhymes)
                 rhyme_count += temp_count
         for i in counterf:
             if counterf[i] > 1:
